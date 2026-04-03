@@ -7,8 +7,11 @@
 // CONFIGURATION
 // ─────────────────────────────────────────────────────────────────────────────
 const CONFIG = {
-  // Change to your deployed backend URL in production
-  API_BASE_URL: 'http://localhost:3000',
+  // En production (Render), on utilise un chemin relatif (car le backend sert le frontend).
+  // En local, on pointe vers le backend.
+  API_BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:3000' 
+    : ''
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projects = document.querySelectorAll('.project-card');
   const footerYear = document.getElementById('footerYear');
-  
+
   // Form Elements
   const contactForm = document.getElementById('contactForm');
   const messageInput = document.getElementById('message');
@@ -54,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Easing factor (lower = smoother but slower)
       currentX += (mouseX - currentX) * 0.1;
       currentY += (mouseY - currentY) * 0.1;
-      
+
       cursorGlow.style.transform = `translate(${currentX}px, ${currentY}px)`;
       requestAnimationFrame(animateCursor);
     };
-    
+
     animateCursor();
 
     // Hide if mouse leaves window
@@ -133,16 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // INTERSECTION OBSERVERS (Scroll Animations)
   // ─────────────────────────────────────────────────────────────────────────────
   const animateElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-  
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
-        
+
         // Target is visible, stop observing if we only want it once.
         // Uncomment below line to animate only once
         // observer.unobserve(entry.target);
-        
+
         // Trigger progress bars if it's a skill card
         if (entry.target.classList.contains('skill-card')) {
           const bars = entry.target.querySelectorAll('.skill-bar-fill');
@@ -158,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ANIMATED COUNTERS (Hero Stats)
   // ─────────────────────────────────────────────────────────────────────────────
   const statElements = document.querySelectorAll('.stat-value');
-  
+
   const animateValue = (obj, start, end, duration) => {
     let startTimestamp = null;
     const step = (timestamp) => {
@@ -172,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Ensure final number is exact and optionally format it
         obj.innerHTML = end;
-        if(end > 10) obj.innerHTML += '+';
+        if (end > 10) obj.innerHTML += '+';
       }
     };
     window.requestAnimationFrame(step);
@@ -209,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         projects.forEach(project => {
           // Reset animation classes for smooth re-triggering
           project.classList.remove('is-visible');
-          
+
           if (filter === 'all' || project.dataset.category === filter) {
             project.classList.remove('is-hidden');
             // Small timeout to allow display:block to apply before re-animating opacity
@@ -227,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─────────────────────────────────────────────────────────────────────────────
   // FORM HANDLING
   // ─────────────────────────────────────────────────────────────────────────────
-  
+
   // Character count for textarea
   if (messageInput && charCount) {
     messageInput.addEventListener('input', () => {
@@ -238,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         charCount.style.color = 'var(--color-text-muted)';
       }
-      
+
       // Clear error state on input
       messageInput.classList.remove('is-invalid');
       document.getElementById('message-error').textContent = '';
@@ -252,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
       input.addEventListener('input', () => {
         input.classList.remove('is-invalid');
         const errorSpan = document.getElementById(`${input.id}-error`);
-        if(errorSpan) errorSpan.textContent = '';
+        if (errorSpan) errorSpan.textContent = '';
       });
     });
   };
@@ -272,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Hide previous status
       formStatus.className = 'form-status';
       formStatus.textContent = '';
-      
+
       // Basic client-side validation
       let isValid = true;
       const nom = document.getElementById('nom').value.trim();
@@ -320,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formStatus.textContent = data.message || 'Votre message a bien été envoyé. Merci !';
           formStatus.classList.add('show', 'success');
           contactForm.reset();
-          if(charCount) charCount.textContent = '0 / 5000';
+          if (charCount) charCount.textContent = '0 / 5000';
         } else {
           // Server Error
           formStatus.textContent = data.error || "Une erreur s'est produite. Veuillez réessayer.";

@@ -9,6 +9,7 @@ const express      = require('express');
 const cors         = require('cors');
 const nodemailer   = require('nodemailer');
 const rateLimit    = require('express-rate-limit');
+const path         = require('path');
 
 // ─────────────────────────────────────────────
 //  Config & Validation
@@ -182,7 +183,16 @@ app.post('/send-mail', contactLimiter, async (req, res) => {
 });
 
 // ─────────────────────────────────────────────
-//  404 catch-all
+//  Servir le Frontend (Render / Prod)
+// ─────────────────────────────────────────────
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
+
+// ─────────────────────────────────────────────
+//  404 catch-all (pour les appels API non reconnus)
 // ─────────────────────────────────────────────
 app.use((_req, res) => {
   res.status(404).json({ success: false, error: 'Route introuvable.' });
