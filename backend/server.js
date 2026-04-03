@@ -75,8 +75,9 @@ app.use(express.json({ limit: '10kb' }));
 // CORS
 app.use(cors({
   origin(origin, cb) {
-    // Autorise les requêtes sans origin (Postman, curl, etc.) en dev
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+    // Autorise les requêtes sans origin (Postman, curl, etc.)
+    // Autorise localhost et les domaines onrender.com
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.onrender.com')) return cb(null, true);
     return cb(new Error(`CORS bloqué pour l'origine : ${origin}`));
   },
   methods: ['GET', 'POST', 'OPTIONS'],
