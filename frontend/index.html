@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio professionnel Full Stack — Développeur passionné par la création d'expériences web modernes, performantes et accessibles." />
+  <meta property="og:title" content="Portfolio — Développeur Full Stack" />
+  <meta property="og:description" content="Développeur Full Stack spécialisé en Node.js, React et architectures cloud-ready." />
+  <meta property="og:type" content="website" />
+  <title>Portfolio — Développeur Full Stack</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       CURSOR GLOW (follows mouse)
+  ══════════════════════════════════════════ -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <header class="nav-header" id="navHeader" role="banner">
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+      <a href="#hero" class="nav-logo" aria-label="Retour en haut">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">Dev</span>
+        <span class="logo-dot">/</span>
+        <span class="logo-bracket">&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#about"    class="nav-link" data-section="about">À propos</a></li>
+        <li><a href="#skills"   class="nav-link" data-section="skills">Compétences</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projets</a></li>
+        <li><a href="#contact"  class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta" id="navCta">
+        <span>Travaillons ensemble</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+        <div class="hero-grid"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge reveal-up">
+          <span class="badge-dot"></span>
+          <span>Disponible pour de nouveaux projets</span>
+        </div>
+
+        <h1 class="hero-title reveal-up" style="--delay:0.1s">
+          <span class="hero-greeting">Bonjour, je suis</span>
+          <span class="hero-name">
+            <span class="name-text" id="heroName">Aboubakr Noursery</span>
+            <span class="name-cursor" aria-hidden="true"></span>
+          </span>
+          <span class="hero-role">
+            Développeur
+            <span class="role-highlight">
+              <span class="role-text" id="roleText">Full Stack</span>
+            </span>
+          </span>
+        </h1>
+
+        <p class="hero-desc reveal-up" style="--delay:0.2s">
+          Je conçois et développe des <strong>applications web modernes</strong>, performantes et scalables —  
+          de l'API REST à l'interface utilisateur, avec une obsession pour la qualité du code et l'expérience utilisateur.
+        </p>
+
+        <div class="hero-actions reveal-up" style="--delay:0.3s">
+          <a href="#projects" class="btn btn-primary" id="heroCta">
+            <span>Voir mes projets</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-ghost" id="heroContact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>Me contacter</span>
+          </a>
+        </div>
+
+        <div class="hero-stats reveal-up" style="--delay:0.4s">
+          <div class="stat-item">
+            <span class="stat-value" data-target="2" id="statExp">0</span>
+            <span class="stat-label">ans d'expérience</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-value" data-target="30" id="statProjects">0</span>
+            <span class="stat-label">projets livrés</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-value" data-target="15" id="statClients">0</span>
+            <span class="stat-label">clients satisfaits</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span class="scroll-text">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════════ -->
+    <section class="about section" id="about" aria-label="À propos">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">01. À propos</span>
+          <h2 class="section-title">Qui suis-je ?</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-visual reveal-left">
+            <div class="about-img-wrapper">
+              <div class="about-img-frame" aria-hidden="true">
+                <div class="about-avatar">
+                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="120" height="120">
+                    <circle cx="100" cy="80" r="40" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="2"/>
+                    <path d="M30 170 Q100 120 170 170" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2"/>
+                    <circle cx="100" cy="76" r="28" fill="#a78bfa" opacity="0.8"/>
+                    <circle cx="100" cy="68" r="20" fill="#1e1b4b"/>
+                    <circle cx="93" cy="65" r="4" fill="#a78bfa"/>
+                    <circle cx="107" cy="65" r="4" fill="#a78bfa"/>
+                    <path d="M93 75 q7 6 14 0" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  </svg>
+                  <div class="avatar-ring" aria-hidden="true"></div>
+                </div>
+                <div class="about-badge-exp" aria-label="5 ans d'expérience">
+                  <span class="badge-num">2+</span>
+                  <span class="badge-text">ans</span>
+                </div>
+              </div>
+              <div class="about-code-snippet" aria-hidden="true">
+                <span class="code-line"><span class="code-kw">const</span> dev <span class="code-op">=</span> {</span>
+                <span class="code-line">  passion<span class="code-op">:</span> <span class="code-str">'code'</span>,</span>
+                <span class="code-line">  coffee<span class="code-op">:</span> <span class="code-num">Infinity</span>,</span>
+                <span class="code-line">  sleep<span class="code-op">:</span> <span class="code-num">4</span>,</span>
+                <span class="code-line">};</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-text reveal-right">
+            <p class="about-lead">
+              Développeur Full Stack avec <strong>2 ans d'expérience</strong>, je suis animé par la conviction que la technologie doit servir les humains — pas l'inverse.
+            </p>
+            <p>
+              Spécialisé en <strong>Node.js / Express</strong> côté serveur et <strong>React / Vue</strong> côté client, je travaille sur des architectures REST et GraphQL, avec une attention particulière à la sécurité, la performance et la maintenabilité du code.
+            </p>
+            <p>
+              En dehors du code, je contribue à des projets open-source, je lis des spécifications RFC pour m'endormir, et j'essaie (parfois sans succès) de garder mes dépendances à jour.
+            </p>
+
+            <div class="about-values">
+              <div class="value-item">
+                <div class="value-icon" aria-hidden="true">⚡</div>
+                <div>
+                  <strong>Performance</strong>
+                  <p>Lighthouse 95+ sur chaque projet livré.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon" aria-hidden="true">🔒</div>
+                <div>
+                  <strong>Sécurité</strong>
+                  <p>OWASP top 10, validation stricte, secrets sécurisés.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon" aria-hidden="true">♿</div>
+                <div>
+                  <strong>Accessibilité</strong>
+                  <p>WCAG 2.1 AA — le web pour tous.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-actions">
+              <a href="#contact" class="btn btn-primary" id="aboutCta">Me contacter</a>
+              <a href="cv.pdf" class="btn btn-ghost" id="aboutCv" download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Télécharger CV
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SKILLS
+    ══════════════════════════════════════════ -->
+    <section class="skills section" id="skills" aria-label="Compétences">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">02. Compétences</span>
+          <h2 class="section-title">Mon stack technique</h2>
+          <p class="section-sub">Des outils soigneusement choisis pour construire des produits de qualité.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1 -->
+          <article class="skill-card reveal-up" style="--delay:0s" aria-label="Frontend">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m8 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="skill-card-title">Frontend</h3>
+            <div class="skill-pills">
+              <span class="pill pill--js">JavaScript ES2024</span>
+              <span class="pill pill--ts">TypeScript</span>
+              <span class="pill pill--react">React 18</span>
+              <span class="pill pill--vue">Vue 3</span>
+              <span class="pill pill--css">CSS / Sass</span>
+              <span class="pill pill--html">HTML5</span>
+            </div>
+            <div class="skill-bar-list">
+              <div class="skill-bar-item">
+                <span>React / Next.js</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:92%"></div>
+                </div>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-bar-item">
+                <span>TypeScript</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:88%"></div>
+                </div>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar-item">
+                <span>CSS / Animation</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:90%"></div>
+                </div>
+                <span class="skill-pct">90%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Category 2 -->
+          <article class="skill-card reveal-up" style="--delay:0.1s" aria-label="Backend">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="8 16 12 12 16 16"/><line x1="12" y1="12" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="skill-card-title">Backend</h3>
+            <div class="skill-pills">
+              <span class="pill pill--node">Node.js</span>
+              <span class="pill pill--express">Express</span>
+              <span class="pill pill--python">Python</span>
+              <span class="pill pill--graphql">GraphQL</span>
+              <span class="pill pill--rest">REST API</span>
+            </div>
+            <div class="skill-bar-list">
+              <div class="skill-bar-item">
+                <span>Node.js / Express</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:95%"></div>
+                </div>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-bar-item">
+                <span>GraphQL / REST</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:85%"></div>
+                </div>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar-item">
+                <span>Python / FastAPI</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:78%"></div>
+                </div>
+                <span class="skill-pct">78%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Category 3 -->
+          <article class="skill-card reveal-up" style="--delay:0.2s" aria-label="Data & Cloud">
+            <div class="skill-card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h3 class="skill-card-title">Data & Cloud</h3>
+            <div class="skill-pills">
+              <span class="pill pill--mongo">MongoDB</span>
+              <span class="pill pill--pg">PostgreSQL</span>
+              <span class="pill pill--redis">Redis</span>
+              <span class="pill pill--docker">Docker</span>
+              <span class="pill pill--aws">AWS</span>
+            </div>
+            <div class="skill-bar-list">
+              <div class="skill-bar-item">
+                <span>MongoDB / Redis</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:88%"></div>
+                </div>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar-item">
+                <span>PostgreSQL</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:82%"></div>
+                </div>
+                <span class="skill-pct">82%</span>
+              </div>
+              <div class="skill-bar-item">
+                <span>Docker / CI-CD</span>
+                <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-bar-fill" style="--pct:80%"></div>
+                </div>
+                <span class="skill-pct">80%</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Tech marquee -->
+        <div class="tech-marquee reveal-up" style="--delay:0.3s" aria-label="Technologies utilisées" aria-hidden="true">
+          <div class="marquee-track">
+            <div class="marquee-items">
+              <span class="marquee-item">React</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Node.js</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">TypeScript</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Docker</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">PostgreSQL</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">MongoDB</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">GraphQL</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">AWS</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Git</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Figma</span>
+              <span class="marquee-sep">✦</span>
+
+              <!-- duplicate for seamless loop -->
+              <span class="marquee-item">React</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Node.js</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">TypeScript</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Docker</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">PostgreSQL</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">MongoDB</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">GraphQL</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">AWS</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Git</span>
+              <span class="marquee-sep">✦</span>
+              <span class="marquee-item">Figma</span>
+              <span class="marquee-sep">✦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PROJECTS
+    ══════════════════════════════════════════ -->
+    <section class="projects section" id="projects" aria-label="Projets">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">03. Projets</span>
+          <h2 class="section-title">Ce que j'ai construit</h2>
+          <p class="section-sub">Une sélection de projets représentatifs — du prototype au produit en production.</p>
+        </div>
+
+        <div class="projects-filter reveal-up" role="tablist" aria-label="Filtrer les projets">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" id="filter-all">Tous</button>
+          <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false" id="filter-fs">Full Stack</button>
+          <button class="filter-btn" data-filter="frontend" role="tab" aria-selected="false" id="filter-fe">Frontend</button>
+          <button class="filter-btn" data-filter="backend" role="tab" aria-selected="false" id="filter-be">Backend</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project 1 -->
+          <article class="project-card reveal-up" data-category="fullstack" style="--delay:0s" aria-label="SonStream — Plateforme musicale">
+            <div class="project-card-header">
+              <div class="project-card-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="project-category-badge">Full Stack</span>
+            </div>
+            <div class="project-thumb" aria-hidden="true">
+              <div class="project-thumb-bg project-thumb-bg--1"></div>
+              <div class="project-thumb-icon">🎵</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">SonStream</h3>
+              <p class="project-desc">Plateforme de streaming musical full stack — upload audio sur Cloudinary, player persistant, système de favoris et dashboard artiste.</p>
+              <div class="project-stack">
+                <span class="pill pill--react">React</span>
+                <span class="pill pill--node">Node.js</span>
+                <span class="pill pill--mongo">MongoDB</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-ghost btn-xs" aria-label="Voir le code source de SonStream">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a href="#" class="btn btn-primary btn-xs" aria-label="Voir la démo de SonStream">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Démo live
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reveal-up" data-category="fullstack" style="--delay:0.1s" aria-label="Agitel Clinic — Gestion de RDV médicaux">
+            <div class="project-card-header">
+              <div class="project-card-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="project-category-badge">Full Stack</span>
+            </div>
+            <div class="project-thumb" aria-hidden="true">
+              <div class="project-thumb-bg project-thumb-bg--2"></div>
+              <div class="project-thumb-icon">🏥</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Agitel Clinic</h3>
+              <p class="project-desc">Plateforme de gestion des rendez-vous médicaux avec 3 rôles (Patient / Médecin / Admin), règle métier sur les quotas par spécialité et UI responsive.</p>
+              <div class="project-stack">
+                <span class="pill pill--php">PHP</span>
+                <span class="pill pill--mysql">MySQL</span>
+                <span class="pill pill--css">CSS3</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-ghost btn-xs" aria-label="Voir le code source d'Agitel Clinic">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a href="#" class="btn btn-primary btn-xs" aria-label="Voir la démo d'Agitel Clinic">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Démo live
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card reveal-up" data-category="frontend" style="--delay:0.2s" aria-label="Djamah — Réseau social">
+            <div class="project-card-header">
+              <div class="project-card-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="project-category-badge">Frontend</span>
+            </div>
+            <div class="project-thumb" aria-hidden="true">
+              <div class="project-thumb-bg project-thumb-bg--3"></div>
+              <div class="project-thumb-icon">🌐</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Djamah</h3>
+              <p class="project-desc">Réseau social communautaire avec interface mobile-first, fil d'actualité templatisé, sidebar tendances et dashboard d'activité utilisateur.</p>
+              <div class="project-stack">
+                <span class="pill pill--python">Django</span>
+                <span class="pill pill--pg">PostgreSQL</span>
+                <span class="pill pill--html">HTML5</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-ghost btn-xs" aria-label="Voir le code source de Djamah">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a href="#" class="btn btn-primary btn-xs" aria-label="Voir la démo de Djamah">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Démo live
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card reveal-up" data-category="backend" style="--delay:0.3s" aria-label="Portfolio API — Backend contact">
+            <div class="project-card-header">
+              <div class="project-card-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="project-category-badge">Backend</span>
+            </div>
+            <div class="project-thumb" aria-hidden="true">
+              <div class="project-thumb-bg project-thumb-bg--4"></div>
+              <div class="project-thumb-icon">⚙️</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Portfolio API</h3>
+              <p class="project-desc">API REST sécurisée pour formulaire de contact — rate limiting, validation stricte, HTML email via Nodemailer, CORS restrictif et gestion fine des erreurs.</p>
+              <div class="project-stack">
+                <span class="pill pill--node">Node.js</span>
+                <span class="pill pill--express">Express</span>
+                <span class="pill pill--ts">SMTP</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-ghost btn-xs" aria-label="Voir le code source de Portfolio API">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a href="#" class="btn btn-primary btn-xs" aria-label="Voir la démo de Portfolio API">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  API docs
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5 — featured -->
+          <article class="project-card project-card--featured reveal-up" data-category="fullstack" style="--delay:0.4s" aria-label="E-Commerce Platform — projet phare">
+            <div class="project-card-header">
+              <div class="project-card-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="project-category-badge">⭐ Projet phare</span>
+            </div>
+            <div class="project-thumb" aria-hidden="true">
+              <div class="project-thumb-bg project-thumb-bg--5"></div>
+              <div class="project-thumb-icon">🛍️</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">E-Commerce Platform</h3>
+              <p class="project-desc">Marketplace B2C complète : authentification JWT, gestion catalogue, panier persistant (Redis), paiement Stripe, tableau de bord vendeur et analytics temps réel.</p>
+              <div class="project-stack">
+                <span class="pill pill--react">React</span>
+                <span class="pill pill--node">Node.js</span>
+                <span class="pill pill--pg">PostgreSQL</span>
+                <span class="pill pill--redis">Redis</span>
+                <span class="pill pill--docker">Docker</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-ghost btn-xs" aria-label="Voir le code source de la plateforme e-commerce">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a href="#" class="btn btn-primary btn-xs" aria-label="Voir la démo de la plateforme e-commerce">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Démo live
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-card reveal-up" data-category="backend" style="--delay:0.5s" aria-label="Auth Service — Microservice JWT">
+            <div class="project-card-header">
+              <div class="project-card-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="project-category-badge">Backend</span>
+            </div>
+            <div class="project-thumb" aria-hidden="true">
+              <div class="project-thumb-bg project-thumb-bg--6"></div>
+              <div class="project-thumb-icon">🔐</div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Auth Microservice</h3>
+              <p class="project-desc">Service d'authentification JWT avec refresh token rotation, blacklist Redis, OAuth2 (Google / GitHub) et RBAC par rôles.</p>
+              <div class="project-stack">
+                <span class="pill pill--node">Node.js</span>
+                <span class="pill pill--redis">Redis</span>
+                <span class="pill pill--pg">PostgreSQL</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-ghost btn-xs" aria-label="Voir le code source du service auth">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a href="#" class="btn btn-primary btn-xs" aria-label="Voir la démo du service auth">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Démo live
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════════ -->
+    <section class="contact section" id="contact" aria-label="Contact">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">04. Contact</span>
+          <h2 class="section-title">Parlons de votre projet</h2>
+          <p class="section-sub">Une idée, une opportunité, une question ? Ma boîte de réception est ouverte.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info column -->
+          <div class="contact-info reveal-left">
+            <div class="contact-info-card">
+              <h3>Travaillons ensemble</h3>
+              <p>Je suis disponible pour des <strong>missions freelance</strong>, des <strong>postes CDI/CDD</strong>, ou simplement pour échanger autour d'un projet intéressant.</p>
+              <p>Temps de réponse moyen : <strong>24 heures</strong>.</p>
+
+              <div class="contact-methods">
+                <a href="mailto:alex@example.com" class="contact-method" id="emailLink" aria-label="Envoyer un email">
+                  <div class="contact-method-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  </div>
+                  <div>
+                    <strong>Email</strong>
+                    <span>alex@example.com</span>
+                  </div>
+                  <svg class="method-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0M12 5l7 7-7 7"/></svg>
+                </a>
+
+                <a href="https://linkedin.com" class="contact-method" id="linkedinLink" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn (ouvre un nouvel onglet)">
+                  <div class="contact-method-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  </div>
+                  <div>
+                    <strong>LinkedIn</strong>
+                    <span>alex-martin-dev</span>
+                  </div>
+                  <svg class="method-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0M12 5l7 7-7 7"/></svg>
+                </a>
+
+                <a href="https://github.com" class="contact-method" id="githubLink" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub (ouvre un nouvel onglet)">
+                  <div class="contact-method-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  </div>
+                  <div>
+                    <strong>GitHub</strong>
+                    <span>@alex-martin</span>
+                  </div>
+                  <svg class="method-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form column -->
+          <div class="contact-form-wrapper reveal-right">
+            <form class="contact-form" id="contactForm" novalidate aria-label="Formulaire de contact">
+              <div class="form-group">
+                <label for="nom" class="form-label">Nom complet <span aria-hidden="true">*</span></label>
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    class="form-input"
+                    placeholder="Jean Dupont"
+                    required
+                    minlength="2"
+                    maxlength="100"
+                    autocomplete="name"
+                    aria-required="true"
+                    aria-describedby="nom-error"
+                  />
+                  <div class="input-focus-ring" aria-hidden="true"></div>
+                </div>
+                <span class="form-error" id="nom-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Adresse e-mail <span aria-hidden="true">*</span></label>
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="jean@example.com"
+                    required
+                    maxlength="254"
+                    autocomplete="email"
+                    aria-required="true"
+                    aria-describedby="email-error"
+                  />
+                  <div class="input-focus-ring" aria-hidden="true"></div>
+                </div>
+                <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message <span aria-hidden="true">*</span></label>
+                <div class="input-wrapper">
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form-input form-textarea"
+                    placeholder="Décrivez votre projet ou votre demande…"
+                    required
+                    minlength="10"
+                    maxlength="5000"
+                    rows="6"
+                    aria-required="true"
+                    aria-describedby="message-error"
+                  ></textarea>
+                  <div class="input-focus-ring" aria-hidden="true"></div>
+                </div>
+                <div class="form-meta">
+                  <span class="form-error" id="message-error" role="alert" aria-live="polite"></span>
+                  <span class="char-count" id="charCount" aria-live="polite">0 / 5000</span>
+                </div>
+              </div>
+
+              <!-- Honeypot anti-spam -->
+              <div class="hp-field" aria-hidden="true">
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit" id="submitBtn" aria-describedby="form-status">
+                <span class="btn-text">Envoyer le message</span>
+                <span class="btn-loader" aria-hidden="true">
+                  <svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                </span>
+                <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>
+              </button>
+
+              <div class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo footer-logo" aria-label="Retour en haut">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-name">Dev</span>
+            <span class="logo-dot">/</span>
+            <span class="logo-bracket">&gt;</span>
+          </a>
+          <p>Développeur Full Stack passionné par la création d'expériences web modernes, performantes et accessibles.</p>
+        </div>
+
+        <div class="footer-nav">
+          <h3 class="footer-heading">Navigation</h3>
+          <ul role="list">
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h3 class="footer-heading">Retrouvez-moi</h3>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" id="footerGithub" aria-label="GitHub (ouvre un nouvel onglet)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" id="footerLinkedin" aria-label="LinkedIn (ouvre un nouvel onglet)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" id="footerTwitter" aria-label="Twitter / X (ouvre un nouvel onglet)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="footerYear"></span> Alex Martin — Développeur Full Stack. Fait avec ❤️ et beaucoup de café.</p>
+        <a href="#hero" class="back-to-top" id="backToTop" aria-label="Retour en haut de page">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
